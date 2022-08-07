@@ -6,6 +6,7 @@
 
 
 // Simple Filtering
+// Filters the array of people who are age 21 and over.
 const people = [
   {
     name: 'Michael',
@@ -20,6 +21,16 @@ const people = [
     age: 18,
   },
 ];
+
+const oldEnough = people.filter(person => person.age >= 21);
+console.log(oldEnough);
+// [ { name: 'Michael', age: 23 } ]
+
+// Filters the array above, picking out only Paul.
+// The [0] takes the item out of an array.
+const paul = people.filter(p => p.name === 'Paul')[0];
+console.log(paul);
+// [ { name: 'Paul', age: 18 } ]
 
 
 // Complex Filtering
@@ -55,3 +66,13 @@ const students = [
     ]
   },
 ];
+ // Filtering through the above array of objects.
+ // Filters the students with 5 or more years of experience.
+const has5YrsExp = skill => skill.yrsExperience >= 5
+const hasStrongSkills = students => students.skills.filter(has5YrsExp).length > 0;
+const candidates = students.filter(hasStrongSkills);
+
+console.log(candidates);
+// Picks out the names from the candidates filtered array.
+const names = candidates.map(student => student.name);
+console.log(names);
